@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c6ic4a60ow2i7"]
+
+[ext_resource type="Script" uid="uid://cv1lkudx5yqd2" path="res://scripts/state_machine.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://ckxxve2u87pey" path="res://scripts/idle.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://bstt6h8xywyk4" path="res://scripts/walk.gd" id="3_lvxji"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kk62l"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cyojo"]
+
+[node name="Player" type="CharacterBody3D" unique_id=476358820]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=274227973]
+shape = SubResource("CapsuleShape3D_kk62l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=44077869]
+mesh = SubResource("CapsuleMesh_cyojo")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1488686126 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_8afob")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1573397637]
+script = ExtResource("2_gmlin")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=1162961982]
+script = ExtResource("3_lvxji")
