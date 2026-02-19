@@ -9,6 +9,8 @@ func _ready() -> void:
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
+			child.player = get_parent() as CharacterBody3D
+			child.anim_player = get_parent().get_node("Model/AnimationPlayer")
 			child.transitioned.connect(on_child_transition)
 	
 	if initial_state:

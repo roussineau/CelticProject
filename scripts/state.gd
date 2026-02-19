@@ -1,6 +1,9 @@
 class_name State
 extends Node
 
+var player: CharacterBody3D
+var anim_player: AnimationPlayer
+
 signal transitioned(state: State, new_state_name: String)
 
 # _ready()

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dul3b7mjp7k4b"]
+
+[ext_resource type="Script" uid="uid://fr2cfbou6jqj" path="res://scenes/drone_camera/drone_camera.gd" id="1_uny0a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7yglm"]
+radius = 0.3
+
+[node name="DroneCamera" type="Node3D" unique_id=1244979802]
+script = ExtResource("1_uny0a")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=660672966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("SphereShape3D_7yglm")
+spring_length = 3.2
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=477256769]
