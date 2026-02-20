@@ -3,6 +3,7 @@ extends Node
 
 var player: CharacterBody3D
 var anim_player: AnimationPlayer
+var spatial_sense: RayCast3D
 
 signal transitioned(state: State, new_state_name: String)
 

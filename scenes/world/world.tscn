@@ -4,8 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dul3b7mjp7k4b" path="res://scenes/drone_camera/drone_camera.tscn" id="2_sl2e5"]
 [ext_resource type="Material" uid="uid://cksnadhmkpw7d" path="res://resources/materials/sky.tres" id="3_1fp7r"]
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1fp7r"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl2e5"]
-albedo_color = Color(0.39688882, 0.6911985, 0.13899335, 1)
+albedo_color = Color(0.31925315, 0.73271984, 3.85046e-07, 1)
+roughness_texture = SubResource("NoiseTexture2D_1fp7r")
 
 [sub_resource type="Sky" id="Sky_6m72w"]
 sky_material = ExtResource("3_1fp7r")
@@ -13,6 +16,8 @@ sky_material = ExtResource("3_1fp7r")
 [sub_resource type="Environment" id="Environment_v5dby"]
 background_mode = 2
 sky = SubResource("Sky_6m72w")
+volumetric_fog_density = 0.009
+volumetric_fog_albedo = Color(0.5754129, 0.7649134, 0.9319295, 1)
 
 [node name="Node3D" type="Node3D" unique_id=312607406]
 
@@ -25,11 +30,18 @@ use_collision = true
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_sl2e5")
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=170209792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9352427, 21.127651)
+use_collision = true
+size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_sl2e5")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=943297030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7623768, 25.547619, 4.5219116)
 
 [node name="DroneCamera" parent="." unique_id=1244979802 node_paths=PackedStringArray("target") instance=ExtResource("2_sl2e5")]
 target = NodePath("../Player")
+smooth_speed = 15.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=746653365]
 environment = SubResource("Environment_v5dby")

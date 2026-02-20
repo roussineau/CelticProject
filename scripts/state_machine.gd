@@ -11,6 +11,7 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.player = get_parent() as CharacterBody3D
 			child.anim_player = get_parent().get_node("Model/AnimationPlayer")
+			child.spatial_sense = get_parent().get_node("RayCast3D")
 			child.transitioned.connect(on_child_transition)
 	
 	if initial_state:
